@@ -22,5 +22,5 @@ func New(typ, server string) Client {
 	if typ == "tcp" {
 		return newTCPClient(server)
 	}
-	panic("unknown client type " + typ)
+	panic("unknown client type" + typ)
 }

@@ -15,7 +15,6 @@ func (h *statusHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
 	}
-
 	b, e := json.Marshal(h.GetStat())
 	if e != nil {
 		log.Println(e)

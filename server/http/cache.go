@@ -36,10 +36,6 @@ func (h *cacheHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-		if len(b) == 0 {
-			w.WriteHeader(http.StatusNotFound)
-			return
-		}
 		w.Write(b)
 		return
 	}

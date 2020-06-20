@@ -21,7 +21,7 @@ func (c *httpClient) get(key string) string {
 	if resp.StatusCode == http.StatusNotFound {
 		return ""
 	}
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode == http.StatusOK {
 		panic(resp.Status)
 	}
 	b, e := ioutil.ReadAll(resp.Body)

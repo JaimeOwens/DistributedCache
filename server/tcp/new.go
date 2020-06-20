@@ -4,14 +4,16 @@ import (
 	"net"
 
 	"../cache"
+	"../cluster"
 )
 
 type Server struct {
 	cache.Cache
+	cluster.Node
 }
 
 func (s *Server) Listen() {
-	l, e := net.Listen("tcp", ":12346")
+	l, e := net.Listen("tcp", s.Addr()+":12346")
 	if e != nil {
 		panic(e)
 	}
@@ -24,6 +26,6 @@ func (s *Server) Listen() {
 	}
 }
 
-func New(c cache.Cache) *Server {
-	return &Server{c}
+func New(c cache.Cache, n cluster.Node) *Server {
+	return &Server{c, n}
 }

@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/stuarthu/cache-benchmark/cacheClient"
+	"../cache-benchmark/cacheClient"
 )
 
 func main() {
@@ -13,7 +13,6 @@ func main() {
 	key := flag.String("k", "", "key")
 	value := flag.String("v", "", "value")
 	flag.Parse()
-
 	client := cacheClient.New("tcp", *server)
 	cmd := &cacheClient.Cmd{*op, *key, *value, nil}
 	client.Run(cmd)
